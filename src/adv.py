@@ -40,7 +40,8 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-newPlayer = Player("Matt", "outside")
+newPlayer = Player("Matt", room['outside'])
+print(newPlayer)
 
 
 # Write a loop that:
@@ -53,4 +54,15 @@ newPlayer = Player("Matt", "outside")
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-print(newPlayer)
+player_input = None
+while (player_input is not 'q'):
+    print(f'''You are in the {newPlayer.current_room.room_name}:
+    '{newPlayer.current_room.room_description}.'
+    The following items are in the room:{newPlayer.current_room.room_items}.
+    Please pick a direction to in (n, e, s, w).''')
+    player_input = input("Enter your direction: ")
+    previous_room = newPlayer.current_room
+    newPlayer.move(player_input)
+    if newPlayer.current_room == None:
+        print("********You are blocked by a mysterious force.********")
+        newPlayer.current_room = previous_room
