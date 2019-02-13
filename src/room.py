@@ -13,4 +13,4 @@ class Room:
         self.w_to = None
 
     def __str__(self):
-        return f"{self.room_name}, {self.room_description}"
+        return f"{self.room_name}, {self.room_description}, {self.room_items}"

@@ -6,21 +6,21 @@ from item import Item
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons", ["sword", "shield"]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", ["skull", "torch"]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""", ["rope", "potion"]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
+to north. The smell of gold permeates the air.""", ["knife", "apple"]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
+earlier adventurers. The only exit is to the south.""", ["cobwebs"]),
 }
 
 
@@ -58,7 +58,7 @@ player_input = None
 while (player_input is not 'q'):
     print(f'''You are in the {newPlayer.current_room.room_name}:
     '{newPlayer.current_room.room_description}.'
-    The following items are in the room:{newPlayer.current_room.room_items}.
+    You notice the following items:{newPlayer.current_room.room_items}.
     Please pick a direction to in (n, e, s, w).''')
     player_input = input("Enter your direction: ")
     previous_room = newPlayer.current_room

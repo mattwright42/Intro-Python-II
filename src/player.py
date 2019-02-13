@@ -9,7 +9,7 @@ class Player:
         self.player_items = player_items
 
     def __str__(self):
-        return f"Greetings {self.player_name}! You are in the {self.current_room} room. You currently hold the following items: {self.player_items}"
+        return f"Greetings {self.player_name}!"
 
     def move(self, direction):
         if direction == 'n':
