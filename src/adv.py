@@ -57,12 +57,19 @@ print(newPlayer)
 player_input = None
 while (player_input is not 'q'):
     print(f'''You are in the {newPlayer.current_room.room_name}:
-    '{newPlayer.current_room.room_description}.'
-    You notice the following items:{newPlayer.current_room.room_items}.
-    Please pick a direction to in (n, e, s, w).''')
-    player_input = input("Enter your direction: ")
+    '{newPlayer.current_room.room_description}. You are holding {newPlayer.items}.'
+    You notice the following items:{newPlayer.current_room.items}.
+    Please pick a direction to move in (n, e, s, w). Use 'take' to add to your inventory, or 'drop' to clear your inventory.''')
+    player_input = input("Enter your action: ")
     previous_room = newPlayer.current_room
-    newPlayer.move(player_input)
+    if player_input != 'take' and player_input != 'drop':
+        newPlayer.move(player_input)
+    elif player_input == 'take':
+        player_input = input('What do you choose to take? ')
+        newPlayer.pickup(player_input)
+    elif player_input == 'drop':
+        player_input = input('What do you no longer need? ')
+        newPlayer.drop(player_input)
     if newPlayer.current_room == None:
         print("********You are blocked by a mysterious force.********")
         newPlayer.current_room = previous_room
