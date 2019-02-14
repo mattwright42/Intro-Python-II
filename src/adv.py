@@ -45,7 +45,7 @@ CRED = '\033[91m'
 CEND = '\033[0m'
 print(CRED + str(newPlayer) + CEND)
 
-
+CBLUE2 = '\33[94m'
 # Write a loop that:
 #
 # * Prints the current room name
@@ -79,7 +79,7 @@ while (player_input is not 'q'):
         #player_input = input('What do you no longer need? ')
         # newPlayer.drop(player_input)
     if newPlayer.current_room == None:
-        print("********You are blocked by a mysterious force.********")
+        print(CBLUE2 + "********You are blocked by a mysterious force.********\n" + CEND)
         newPlayer.current_room = previous_room
     # else:
         #print('''Are you sure you've played these games before?''')
