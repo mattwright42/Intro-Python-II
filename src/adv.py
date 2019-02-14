@@ -66,12 +66,18 @@ while (player_input is not 'q'):
     previous_room = newPlayer.current_room
     if player_input != 'take' and player_input != 'drop':
         newPlayer.move(player_input)
-    elif player_input == 'take':
-        player_input = input('What do you choose to take? ')
-        newPlayer.pickup(player_input)
-    elif player_input == 'drop':
-        player_input = input('What do you no longer need? ')
-        newPlayer.drop(player_input)
+    if player_input.startswith('take '):
+        items = player_input.split(' ')
+        newPlayer.pickup(items[1])
+    if player_input.startswith('drop '):
+        items = player_input.split(' ')
+        newPlayer.drop(items[1])
+    # elif player_input == 'take':
+        #player_input = input('What do you choose to take? ')
+        # newPlayer.pickup(player_input)
+    # elif player_input == 'drop':
+        #player_input = input('What do you no longer need? ')
+        # newPlayer.drop(player_input)
     if newPlayer.current_room == None:
         print("********You are blocked by a mysterious force.********")
         newPlayer.current_room = previous_room
