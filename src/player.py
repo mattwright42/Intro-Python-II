@@ -9,7 +9,7 @@ class Player:
         self.items = items
 
     def __str__(self):
-        return f"Greetings {self.player_name}!"
+        return f"Greetings {self.player_name}!\n"
 
     def move(self, direction):
         if direction == 'n':

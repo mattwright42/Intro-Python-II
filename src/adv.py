@@ -41,7 +41,9 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 newPlayer = Player("Matt", room['outside'])
-print(newPlayer)
+CRED = '\033[91m'
+CEND = '\033[0m'
+print(CRED + str(newPlayer) + CEND)
 
 
 # Write a loop that:
@@ -56,10 +58,10 @@ print(newPlayer)
 # If the user enters "q", quit the game.
 player_input = None
 while (player_input is not 'q'):
-    print(f'''You are in the {newPlayer.current_room.room_name}:
+    print(f'''You are in the {newPlayer.current_room.room_name}:\n
     '{newPlayer.current_room.room_description}. You are holding {newPlayer.items}.'
-    You notice the following items:{newPlayer.current_room.items}.
-    Please pick a direction to move in (n, e, s, w). Use 'take' to add to your inventory, or 'drop' to clear your inventory.''')
+    You notice the following items:{newPlayer.current_room.items}.\n
+    Please pick a direction to move in (n, e, s, w). Interested in items? Need to clean out your bag? Use 'take' to add to your inventory, or 'drop' to clear your inventory.\n''')
     player_input = input("Enter your action: ")
     previous_room = newPlayer.current_room
     if player_input != 'take' and player_input != 'drop':
@@ -73,3 +75,5 @@ while (player_input is not 'q'):
     if newPlayer.current_room == None:
         print("********You are blocked by a mysterious force.********")
         newPlayer.current_room = previous_room
+    # else:
+        #print('''Are you sure you've played these games before?''')
